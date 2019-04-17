@@ -1,2 +1,0 @@
-# Ethan Vogelsang's dotfiles
-
