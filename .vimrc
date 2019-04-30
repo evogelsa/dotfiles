@@ -6,13 +6,12 @@ set tabstop=3
 set shiftwidth=3
 set expandtab
 set colorcolumn=81
-set relativenumber
 set number
 set autoindent
 set splitright
 set splitbelow
 " include fuzzy finder and vundle in run time path
-set rtp+=~/.fzf
+"set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " Section: Plugins
@@ -20,14 +19,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'sheerun/vim-polyglot'
@@ -36,7 +34,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
 Plugin 'christoomey/vim-system-copy'
-Plugin 'suan/vim-instant-markdown'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
@@ -61,15 +58,14 @@ let g:syntastic_python_checkers = ['python']
 " Section: Lightline and tmux powerline
 
 set laststatus=2
-let g:instant_markdown_autostart = 0 " :InstantMarkdownPreview
-let g:lightline = {}
-let g:lightline.component_type = {
-   \ 'linter_checking': 'left',
-   \ 'linter_warnings': 'warning',
-   \ 'linter_errors': 'error',
-   \ 'linter_ok': 'left',
-   \ }
-let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
+" let g:lightline = {}
+" let g:lightline.component_type = {
+"    \ 'linter_checking': 'left',
+"    \ 'linter_warnings': 'warning',
+"    \ 'linter_errors': 'error',
+"    \ 'linter_ok': 'left',
+"    \ }
+" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
 " tmux powerline
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
@@ -119,7 +115,6 @@ map <C-b> :NERDTreeToggle<CR>
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
-autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
