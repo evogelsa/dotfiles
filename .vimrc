@@ -19,22 +19,22 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'itchyny/lightline.vim'
-set laststatus=2
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'joshdick/onedark.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
-Plugin 'craigemery/vim-autotag'
 Plugin 'christoomey/vim-system-copy'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'vim-syntastic/syntastic'
@@ -52,7 +52,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers = ['gcc']
 let g:syntastic_c_compiler_options = "-Wall -Wpedantic -ansi -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
@@ -60,6 +60,7 @@ let g:syntastic_python_checkers = ['python']
 
 " Section: Lightline and tmux powerline
 
+set laststatus=2
 let g:instant_markdown_autostart = 0 " :InstantMarkdownPreview
 let g:lightline = {}
 let g:lightline.component_type = {
@@ -81,6 +82,10 @@ let g:tmuxline_preset = {
    \'y'     : '%A',
    \'z'     : '%D'}
 " end lightline config
+
+" Section: Vim Markdown
+
+let g:vim_markdown_folding_disabled = 1
 
 " Section: Key mappings
 
@@ -120,15 +125,19 @@ inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
 inoremap " <c-r>=QuoteDelim('"')<CR>
 inoremap ' <c-r>=QuoteDelim("'")<CR>
+" Remap C-a to C-q to not conflict with tmux
+inoremap <C-a> <C-q>
 
 " Section: Color scheme
 
 "color scheme
 syntax on
-colorscheme onedark
-let g:lightline = {
-   \ 'colorscheme': 'one',
-   \ }
+set t_Co=256
+set background=dark
+colorscheme PaperColor
+"let g:lightline = {
+"   \ 'colorscheme': 'one',
+"   \ }
 set noshowmode
 "end colorscheme
 

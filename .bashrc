@@ -23,6 +23,9 @@ set -o vi
 bind 'set show-mode-in-prompt on'
 bind '"jj":vi-movement-mode'
 export VISUAL=/usr/bin/vim
+export ANDROID_HOME=~/Android/Sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export JAVA_HOME=/usr/lib/jvm/default-java
 
 ### Section: Prompt settings
 
@@ -99,6 +102,9 @@ alias ..="cd .."
 alias tree="tree -C"
 alias dirtree="tree -Cd"
 alias arduino="/usr/bin/arduino-1.8.9-linux64/arduino-1.8.9/arduino"
+alias androidstudio="/usr/bin/android-studio/bin/studio.sh"
+#  clears in tmux
+alias ''='clear'
 
 ### Section: Function definitions
 
