@@ -38,6 +38,8 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 call vundle#end()
 
 " Section: Linter configuration
