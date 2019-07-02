@@ -1,7 +1,7 @@
 " Section: Environment settings
 
 set nocompatible              " be iMproved, required
-filetype plugin on            " supposed to be off, set to this for markdown
+filetype off            " supposed to be off, set to this for markdown
 set tabstop=3
 set shiftwidth=3
 set expandtab

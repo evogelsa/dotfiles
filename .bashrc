@@ -104,7 +104,8 @@ alias dirtree="tree -Cd"
 alias arduino="/usr/bin/arduino-1.8.9-linux64/arduino-1.8.9/arduino"
 alias androidstudio="/usr/bin/android-studio/bin/studio.sh"
 #  clears in tmux
-alias ''='clear'
+alias ""="clear"
+alias "n."="nautilus ."
 
 ### Section: Function definitions
 
@@ -134,10 +135,14 @@ extract()
 # fuzzy finder
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 # convert mdown + latex to pdf for notes
-mdown2pdf()
+md2pdf()
 {
    if [ -f $1 ] ; then
-      pandoc $1 -o $2
+      if [ $2 ] ; then
+         pandoc $1 -o $2
+      else
+         pandoc $1 -o ${1%.*}.pdf
+      fi
    else
       echo "'$1' is not a valid file"
    fi
