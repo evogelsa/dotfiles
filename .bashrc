@@ -27,6 +27,7 @@ export ANDROID_HOME=~/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export JAVA_HOME=/usr/lib/jvm/default-java
 
+
 ### Section: Prompt settings
 
 # force color prompt on
