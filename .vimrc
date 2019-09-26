@@ -2,14 +2,15 @@
 
 set nocompatible              " be iMproved, required
 filetype off            " supposed to be off, set to this for markdown
-set tabstop=3
-set shiftwidth=3
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set colorcolumn=81
 set number
 set autoindent
 set splitright
 set splitbelow
+set formatoptions=tqcr
 " include fuzzy finder and vundle in run time path
 "set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -116,7 +117,7 @@ map <C-b> :NERDTreeToggle<CR>
 " Auto close brackets and delims
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap { {}<Esc>i
+inoremap { {<CR>}<up><Esc>A
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
@@ -124,6 +125,10 @@ inoremap " <c-r>=QuoteDelim('"')<CR>
 inoremap ' <c-r>=QuoteDelim("'")<CR>
 " Remap C-a to C-q to not conflict with tmux
 inoremap <C-a> <C-q>
+" :set ts=2 noet | retab! | set et ts=4 | retab
+nnoremap <silent> <F6> :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 
 " Section: Color scheme
 
@@ -132,6 +137,8 @@ syntax on
 set t_Co=256
 set background=dark
 colorscheme PaperColor
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=NONE
 "let g:lightline = {
 "   \ 'colorscheme': 'one',
 "   \ }
