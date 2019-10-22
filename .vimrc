@@ -41,6 +41,7 @@ Plugin 'sickill/vim-pasta'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'dhruvasagar/vim-table-mode'
 call vundle#end()
 
 " Section: Linter configuration
@@ -85,6 +86,8 @@ let g:tmuxline_preset = {
 " Section: Vim Markdown
 
 let g:vim_markdown_folding_disabled = 1
+" make vim table mode plugin use | for md compatibility
+let g:table_mode_corner = '|'
 
 " Section: Key mappings
 
