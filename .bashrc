@@ -96,6 +96,7 @@ alias link="gcc -ansi -g -o"
 alias linkcompile="gcc -Wall -Wpedantic -ansi -g -o"
 alias py="python3"
 alias py3="python3"
+alias ipy="ipython"
 alias pip="pip3"
 alias chrome="/opt/google/chrome/google-chrome"
 alias ..="cd .."
@@ -107,6 +108,7 @@ alias androidstudio="/usr/bin/android-studio/bin/studio.sh"
 #  clears in tmux
 alias ""="clear"
 alias "n."="nautilus ."
+alias tron="ssh sshtron.zachlatta.com"
 
 ### Section: Function definitions
 
