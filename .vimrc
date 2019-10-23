@@ -142,6 +142,7 @@ set background=dark
 colorscheme PaperColor
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
+highlight ColorColumn ctermbg=7
 "let g:lightline = {
 "   \ 'colorscheme': 'one',
 "   \ }
