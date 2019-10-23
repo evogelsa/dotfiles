@@ -89,11 +89,9 @@ alias vi=vim
 # valgrind checker for memory leaks and improper memory usage
 alias vg="valgrind --leak-check=yes --malloc-fill=0x88 --track-origins=yes"
 # compiles <filename.c> and stores as <filename.o>
-alias compile="gcc -Wall -Wpedantic -ansi -g -c"
+alias compile_only="gcc -Wall -Wpedantic -g -c"
 # links <filename.o> to system libs and makes executable
-alias link="gcc -ansi -g -o"
-# compiles and links in one step
-alias linkcompile="gcc -Wall -Wpedantic -ansi -g -o"
+alias compile="gcc -Wall -Wpedantic -g -o"
 alias py="python3"
 alias py3="python3"
 alias ipy="ipython"
