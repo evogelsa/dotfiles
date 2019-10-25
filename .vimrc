@@ -11,6 +11,7 @@ set autoindent
 set splitright
 set splitbelow
 set formatoptions=tqcr
+set conceallevel=0
 " include fuzzy finder and vundle in run time path
 "set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/Vundle.vim
