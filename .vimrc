@@ -56,7 +56,7 @@ let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_c_checkers = ['gcc']
-let g:syntastic_c_compiler_options = "-Wall -Wpedantic -ansi -g -c"
+let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
 let g:syntastic_python_checkers = ['python']
 
