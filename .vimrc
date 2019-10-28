@@ -26,6 +26,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
 Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'tomtom/tcomment_vim'
@@ -43,6 +44,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'xuhdev/vim-latex-live-preview'
 call vundle#end()
 
 " Section: Linter configuration
@@ -89,6 +91,10 @@ let g:tmuxline_preset = {
 let g:vim_markdown_folding_disabled = 1
 " make vim table mode plugin use | for md compatibility
 let g:table_mode_corner = '|'
+
+" Section: LaTeX preview
+
+let g:livepreview_cursorhold_recompile = 0
 
 " Section: Key mappings
 
