@@ -107,6 +107,7 @@ alias androidstudio="/usr/bin/android-studio/bin/studio.sh"
 alias ""="clear"
 alias "n."="nautilus ."
 alias tron="ssh sshtron.zachlatta.com"
+alias crt="cool-retro-term -e tmux"
 
 ### Section: Function definitions
 
