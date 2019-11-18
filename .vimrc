@@ -12,7 +12,7 @@ set splitright
 set splitbelow
 set formatoptions=tqcr
 set conceallevel=0
-set redrawtime=5000
+set redrawtime=10000
 " include fuzzy finder and vundle in run time path
 "set rtp+=~/.fzf
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,7 +42,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
 Plugin 'edkolev/tmuxline.vim'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'xuhdev/vim-latex-live-preview'
@@ -97,6 +97,14 @@ let g:table_mode_corner = '|'
 
 let g:livepreview_cursorhold_recompile = 0
 
+" Section: Vim Easytags
+
+let g:easytags_async = 1
+let g:easytags_on_cursorhold = 0
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
+
+
 " Section: Key mappings
 
 " add alt key support <M- > in normal mode
@@ -144,10 +152,11 @@ nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 " Section: Color scheme
 
 "color scheme
-syntax on
 set t_Co=256
 set background=dark
 colorscheme PaperColor
+syntax on
+syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 highlight ColorColumn ctermbg=7
