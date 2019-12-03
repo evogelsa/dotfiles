@@ -108,6 +108,7 @@ alias ""="clear"
 alias "n."="nautilus ."
 alias tron="ssh sshtron.zachlatta.com"
 alias crt="cool-retro-term -e tmux"
+alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
 
 ### Section: Function definitions
 
