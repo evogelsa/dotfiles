@@ -63,17 +63,18 @@ let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
 let g:syntastic_python_checkers = ['python']
 
-" Section: Lightline and tmux powerline
+" Section: Airline and tmux powerline
 
 set laststatus=2
-" let g:lightline = {}
-" let g:lightline.component_type = {
-"    \ 'linter_checking': 'left',
-"    \ 'linter_warnings': 'warning',
-"    \ 'linter_errors': 'error',
-"    \ 'linter_ok': 'left',
-"    \ }
-" let g:lightline.active = { 'right': [[ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]] }
+" airline supposedly help with slowdowns
+if ! has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
 " tmux powerline
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
@@ -104,6 +105,9 @@ let g:easytags_on_cursorhold = 0
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
+" Section: indent line
+
+let g:indentLine_fileTypeExclude = ['markdown']
 
 " Section: Key mappings
 
@@ -155,7 +159,7 @@ nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :noh
 set t_Co=256
 set background=dark
 colorscheme PaperColor
-syntax on
+syntax enable
 syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
