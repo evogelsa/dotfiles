@@ -48,6 +48,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ycm-core/YouCompleteMe'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 " Section: Linter configuration
