@@ -114,6 +114,7 @@ alias "n."="nautilus ."
 alias tron="ssh sshtron.zachlatta.com"
 alias crt="cool-retro-term -e tmux"
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
+alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
 
 ### Section: Function definitions
 

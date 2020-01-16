@@ -112,6 +112,13 @@ let g:easytags_auto_highlight = 0
 
 let g:indentLine_fileTypeExclude = ['markdown']
 
+" Section: vim-go
+
+let g:go_snippet_engine = ""
+let g:go_template_autocreate = 0
+let g:go_code_completion_enabled = 0
+
+
 " Section: Key mappings
 
 " add alt key support <M- > in normal mode
