@@ -23,9 +23,14 @@ set -o vi
 bind 'set show-mode-in-prompt on'
 bind '"jj":vi-movement-mode'
 export VISUAL=/usr/bin/vim
-export ANDROID_HOME=~/Android/Sdk
+export ANDROID_HOME=~$HOME/Android/Sdk
+export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=${PATH}:${ANDROID_NDK_HOME}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
+export ANDROID_SYSROOT=${ANDROID_NDK_HOME}/platforms/android-16/arch-arm
 export JAVA_HOME=/usr/lib/jvm/default-java
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 
 
 ### Section: Prompt settings
@@ -79,7 +84,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 # ls shortcuts
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 # easy login to silo

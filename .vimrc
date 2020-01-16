@@ -1,7 +1,7 @@
 " Section: Environment settings
 
 set nocompatible              " be iMproved, required
-filetype off            " supposed to be off, set to this for markdown
+filetype plugin on
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -12,6 +12,7 @@ set splitright
 set splitbelow
 set formatoptions=tqcr
 set conceallevel=0
+set signcolumn=yes
 set redrawtime=10000
 " include fuzzy finder and vundle in run time path
 "set rtp+=~/.fzf
@@ -46,6 +47,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'xuhdev/vim-latex-live-preview'
+Plugin 'ycm-core/YouCompleteMe'
 call vundle#end()
 
 " Section: Linter configuration
@@ -71,7 +73,7 @@ if ! has('gui_running')
   set ttimeoutlen=10
   augroup FastEscape
     autocmd!
-    au InsertEnter * set timeoutlen=0
+    au InsertEnter * set timeoutlen=200
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
@@ -138,9 +140,73 @@ map N <Plug>(easymotion-prev)
 " Nerd tree map
 map <C-b> :NERDTreeToggle<CR>
 " Auto close brackets and delims
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {<CR>}<up><Esc>A
+" inoremap ( ()<Esc>i
+" inoremap [ []<Esc>i
+" inoremap { {<CR>}<up><Esc>A
+"-- AUTOCLOSE --
+"autoclose and position cursor to write text inside
+inoremap ' ''<left>
+inoremap ` ``<left>
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+"autoclose with ; and position cursor to write text inside
+inoremap '; '';<left><left>
+inoremap `; ``;<left><left>
+inoremap "; "";<left><left>
+inoremap (; ();<left><left>
+inoremap [; [];<left><left>
+inoremap {; {};<left><left>
+"autoclose with , and position cursor to write text inside
+inoremap ', '',<left><left>
+inoremap `, ``,<left><left>
+inoremap ", "",<left><left>
+inoremap (, (),<left><left>
+inoremap [, [],<left><left>
+inoremap {, {},<left><left>
+"autoclose and position cursor after
+inoremap '<tab> ''
+inoremap `<tab> ``
+inoremap "<tab> ""
+inoremap (<tab> ()
+inoremap [<tab> []
+inoremap {<tab> {}
+"autoclose with ; and position cursor after
+inoremap ';<tab> '';
+inoremap `;<tab> ``;
+inoremap ";<tab> "";
+inoremap (;<tab> ();
+inoremap [;<tab> [];
+inoremap {;<tab> {};
+"autoclose with , and position cursor after
+inoremap ',<tab> '',
+inoremap `,<tab> ``,
+inoremap ",<tab> "",
+inoremap (,<tab> (),
+inoremap [,<tab> [],
+inoremap {,<tab> {},
+"autoclose 2 lines below and position cursor in the middle
+inoremap '<CR> '<CR>'<ESC>O<tab>
+inoremap `<CR> `<CR>`<ESC>O<tab>
+inoremap "<CR> "<CR>"<ESC>O<tab>
+inoremap (<CR> (<CR>)<ESC>O<tab>
+inoremap [<CR> [<CR>]<ESC>O<tab>
+inoremap {<CR> {<CR>}<ESC>O<tab>
+"autoclose 2 lines below adding ; and position cursor in the middle
+inoremap ';<CR> '<CR>';<ESC>O<tab>
+inoremap `;<CR> `<CR>`;<ESC>O<tab>
+inoremap ";<CR> "<CR>";<ESC>O<tab>
+inoremap (;<CR> (<CR>);<ESC>O<tab>
+inoremap [;<CR> [<CR>];<ESC>O<tab>
+inoremap {;<CR> {<CR>};<ESC>O<tab>
+"autoclose 2 lines below adding , and position cursor in the middle
+inoremap ',<CR> '<CR>',<ESC>O<tab>
+inoremap `,<CR> `<CR>`,<ESC>O<tab>
+inoremap ",<CR> "<CR>",<ESC>O<tab>
+inoremap (,<CR> (<CR>),<ESC>O<tab>
+inoremap [,<CR> [<CR>],<ESC>O<tab>
+inoremap {,<CR> {<CR>},<ESC>O<tab>
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
