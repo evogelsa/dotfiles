@@ -43,8 +43,9 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
 Plugin 'edkolev/tmuxline.vim'
-"Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
+Plugin 'craigemery/vim-autotag'
+" Plugin 'xolox/vim-easytags'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'ycm-core/YouCompleteMe'
@@ -66,6 +67,10 @@ let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
 let g:syntastic_python_checkers = ['python']
 
+" Section: youcompleteme
+
+
+
 " Section: Airline and tmux powerline
 
 set laststatus=2
@@ -74,7 +79,7 @@ if ! has('gui_running')
   set ttimeoutlen=10
   augroup FastEscape
     autocmd!
-    au InsertEnter * set timeoutlen=200
+    au InsertEnter * set timeoutlen=230
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
@@ -104,9 +109,17 @@ let g:livepreview_cursorhold_recompile = 0
 " Section: Vim Easytags
 
 let g:easytags_async = 1
+let g:easytags_file = '~/.vim/tags'
+set tags=./.tags;
 let g:easytags_on_cursorhold = 0
-let g:easytags_auto_update = 0
+let g:easytags_dynamic_file = 1
 let g:easytags_auto_highlight = 0
+let g:easytags_autorecurse = 1
+let g:ycm_collect_identifiers_from_tags_files=0
+
+" Section: Vim autotag
+
+let g:autotagTagsFile="./.tags"
 
 " Section: indent line
 
