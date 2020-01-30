@@ -32,7 +32,6 @@ export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 
-
 ### Section: Prompt settings
 
 # force color prompt on
@@ -116,9 +115,9 @@ alias crt="cool-retro-term -e tmux"
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
 alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
 
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
+# if type nvim > /dev/null 2>&1; then
+#   alias vim='nvim'
+# fi
 
 ### Section: Function definitions
 
