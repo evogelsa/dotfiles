@@ -69,7 +69,8 @@ let g:syntastic_python_checkers = ['python']
 
 " Section: youcompleteme
 
-
+let g:ycm_autoclose_preview_window_after_completion = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " Section: Airline and tmux powerline
 
@@ -79,7 +80,7 @@ if ! has('gui_running')
   set ttimeoutlen=10
   augroup FastEscape
     autocmd!
-    au InsertEnter * set timeoutlen=230
+    au InsertEnter * set timeoutlen=250
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
