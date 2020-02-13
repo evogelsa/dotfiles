@@ -7,7 +7,6 @@ set shiftwidth=4
 set expandtab
 set colorcolumn=81
 set number
-set relativenumber
 set autoindent
 set splitright
 set splitbelow
@@ -17,7 +16,7 @@ set signcolumn=yes
 set redrawtime=10000
 " include fuzzy finder and vundle in run time path
 "set rtp+=~/.fzf
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 " Section: Plugins
 
@@ -49,8 +48,15 @@ Plugin 'craigemery/vim-autotag'
 " Plugin 'xolox/vim-easytags'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'ycm-core/YouCompleteMe'
 Plugin 'fatih/vim-go'
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+    Plugin 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+    Plugin 'Shougo/neoinclude.vim'
+    Plugin 'Shougo/deoplete-clangx'
+    Plugin 'deoplete-plugins/deoplete-jedi'
+    Plugin 'Shougo/neco-vim'
 call vundle#end()
 
 " Section: Linter configuration
@@ -67,6 +73,10 @@ let g:syntastic_c_checkers = ['gcc']
 let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
 let g:syntastic_python_checkers = ['python']
+
+" Section: deoplete
+
+let g:deoplete#enable_at_startup = 1
 
 " Section: youcompleteme
 
@@ -241,6 +251,10 @@ inoremap <C-a> <C-q>
 nnoremap <silent> <F6> :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
+" complete with tab
+inoremap  <c-space> <c-x><c-o>
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <s-tab> <c-p>
 
 " Section: Color scheme
 
@@ -294,6 +308,8 @@ endf
 
 "auto clsoe vim if nerdtree is only plugin left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autoclose preview after complete or leave insert deoplete
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort

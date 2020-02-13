@@ -56,6 +56,11 @@ unset color_prompt force_color_prompt
 
 ### Section: Aliasses
 
+# use nvim if installed else vim
+if type nvim > /dev/null 2>&1; then
+    alias vim='nvim'
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -114,6 +119,7 @@ alias tron="ssh sshtron.zachlatta.com"
 alias crt="cool-retro-term -e tmux"
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
 alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
+alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 
 # if type nvim > /dev/null 2>&1; then
 #   alias vim='nvim'
