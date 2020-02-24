@@ -1,3 +1,10 @@
+
+" ###################################
+" # make sure you mean to do .vimrc #
+" # and not your nvim init! :)      #
+" ###################################
+
+
 " Section: Environment settings
 
 set nocompatible              " be iMproved, required
