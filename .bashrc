@@ -31,6 +31,7 @@ export ANDROID_SYSROOT=${ANDROID_NDK_HOME}/platforms/android-16/arch-arm
 export JAVA_HOME=/usr/lib/jvm/default-java
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
+export GOPATH=$HOME/go
 
 ### Section: Prompt settings
 
