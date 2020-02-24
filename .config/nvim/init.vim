@@ -7,6 +7,7 @@ set shiftwidth=4
 set expandtab
 set colorcolumn=81
 set number
+set relativenumber
 set autoindent
 set splitright
 set splitbelow
@@ -20,7 +21,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 " Section: Plugins
 
-call vundle#begin()
+call vundle#begin('~/..config/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
@@ -33,13 +34,14 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
 Plugin 'joshdick/onedark.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
 Plugin 'christoomey/vim-system-copy'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
+Plugin 'neomake/neomake'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
 Plugin 'edkolev/tmuxline.vim'
@@ -59,7 +61,15 @@ Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plugin 'Shougo/neco-vim'
 call vundle#end()
 
-" Section: Linter configuration
+" Section: neomake Linter configuration
+
+" When writing a buffer (no delay).
+" call neomake#configure#automake('w')
+" When reading a buffer (after 1s), and when writing (no delay).
+call neomake#configure#automake('rw', 1000)
+let g:neomake_open_list = 2
+
+" iection: Syntastic Linter configuration
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -73,6 +83,8 @@ let g:syntastic_c_checkers = ['gcc']
 let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
 let g:syntastic_c_include_dirs = ["includes", "headers"]
 let g:syntastic_python_checkers = ['python']
+
+let g:airline#extensions#ale#enabled = 1
 
 " Section: deoplete
 
@@ -142,7 +154,6 @@ let g:indentLine_fileTypeExclude = ['markdown']
 let g:go_snippet_engine = ""
 let g:go_template_autocreate = 0
 let g:go_code_completion_enabled = 0
-
 
 " Section: Key mappings
 
@@ -220,26 +231,26 @@ inoremap {;<tab> {};
 " inoremap [,<tab> [],
 " inoremap {,<tab> {},
 "autoclose 2 lines below and position cursor in the middle
-inoremap '<CR> '<CR>'<ESC>O<tab>
-inoremap `<CR> `<CR>`<ESC>O<tab>
-inoremap "<CR> "<CR>"<ESC>O<tab>
-inoremap (<CR> (<CR>)<ESC>O<tab>
-inoremap [<CR> [<CR>]<ESC>O<tab>
-inoremap {<CR> {<CR>}<ESC>O<tab>
+inoremap '<CR> '<CR>'<ESC>O
+inoremap `<CR> `<CR>`<ESC>O
+inoremap "<CR> "<CR>"<ESC>O
+inoremap (<CR> (<CR>)<ESC>O
+inoremap [<CR> [<CR>]<ESC>O
+inoremap {<CR> {<CR>}<ESC>O
 "autoclose 2 lines below adding ; and position cursor in the middle
-inoremap ';<CR> '<CR>';<ESC>O<tab>
-inoremap `;<CR> `<CR>`;<ESC>O<tab>
-inoremap ";<CR> "<CR>";<ESC>O<tab>
-inoremap (;<CR> (<CR>);<ESC>O<tab>
-inoremap [;<CR> [<CR>];<ESC>O<tab>
-inoremap {;<CR> {<CR>};<ESC>O<tab>
+inoremap ';<CR> '<CR>';<ESC>O
+inoremap `;<CR> `<CR>`;<ESC>O
+inoremap ";<CR> "<CR>";<ESC>O
+inoremap (;<CR> (<CR>);<ESC>O
+inoremap [;<CR> [<CR>];<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
 "autoclose 2 lines below adding , and position cursor in the middle
-inoremap ',<CR> '<CR>',<ESC>O<tab>
-inoremap `,<CR> `<CR>`,<ESC>O<tab>
-inoremap ",<CR> "<CR>",<ESC>O<tab>
-inoremap (,<CR> (<CR>),<ESC>O<tab>
-inoremap [,<CR> [<CR>],<ESC>O<tab>
-inoremap {,<CR> {<CR>},<ESC>O<tab>
+inoremap ',<CR> '<CR>',<ESC>O
+inoremap `,<CR> `<CR>`,<ESC>O
+inoremap ",<CR> "<CR>",<ESC>O
+inoremap (,<CR> (<CR>),<ESC>O
+inoremap [,<CR> [<CR>],<ESC>O
+inoremap {,<CR> {<CR>},<ESC>O
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
@@ -306,10 +317,30 @@ function QuoteDelim(char)
  endif
 endf
 
-"auto clsoe vim if nerdtree is only plugin left
+"auto clsoe vim if nerdtree is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "autoclose preview after complete or leave insert deoplete
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"autoclose quick fix if only window
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
+" autoclose location list
+augroup my_neomake_qf
+    autocmd!
+    autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
+augroup END
+"auto build on write vim-go
+" vim-go syntastic compat
+" " Build/Test on save.
+" augroup auto_go
+" 	autocmd!
+" 	autocmd BufWritePost *.go :GoBuild
+" 	autocmd BufWritePost *_test.go :GoTest
+" augroup end
+
+
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
