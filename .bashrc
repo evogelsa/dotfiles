@@ -121,6 +121,7 @@ alias crt="cool-retro-term -e tmux"
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
 alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+alias cura="/usr/bin/Cura/Cura_4.4.1.AppImage&"
 
 # if type nvim > /dev/null 2>&1; then
 #   alias vim='nvim'
@@ -141,7 +142,7 @@ extract()
          *.tar)       tar xvf $1 ;;
          *.tbz2)      tar xjf $1 ;;
          *.tgz)       tar xzf $1 ;;
-         *.zip)       unzip $1 ;;
+         *.zip)       unzip $1 -d ${1%.*};;
          *.Z)         uncompress $1 ;;
          *.7z)        7za x $1 ;;
          *.xz)        xz -d $1 ;;
