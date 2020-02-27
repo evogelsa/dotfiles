@@ -56,9 +56,9 @@ Plugin 'xolox/vim-misc'
 " Plugin 'xolox/vim-easytags'
 Plugin 'szw/vim-tags'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'fatih/vim-go'
+" Plugin 'xuhdev/vim-latex-live-preview'
+" Plugin 'ycm-core/YouCompleteMe'
+" Plugin 'fatih/vim-go'
 call vundle#end()
 
 " Section: Linter configuration
