@@ -69,6 +69,7 @@ call vundle#end()
 " When reading a buffer (after 1s), and when writing (no delay).
 call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 2
+let g:neomake_python_enabled_makers = ['pyflakes', 'python']
 
 " iection: Syntastic Linter configuration
 
