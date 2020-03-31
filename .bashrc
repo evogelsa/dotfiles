@@ -23,12 +23,12 @@ set -o vi
 bind 'set show-mode-in-prompt on'
 bind '"jj":vi-movement-mode'
 export VISUAL=/usr/bin/vim
-export ANDROID_HOME=~$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=${PATH}:${ANDROID_NDK_HOME}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
 export ANDROID_SYSROOT=${ANDROID_NDK_HOME}/platforms/android-16/arch-arm
-export JAVA_HOME=/usr/lib/jvm/default-java
+export JAVA_HOME=/usr/lib/jvm/java-14-oracle/
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 export GOPATH=$HOME/go
