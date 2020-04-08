@@ -21,7 +21,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 
 " Section: Plugins
 
-call vundle#begin('~/..config/nvim/bundle')
+call vundle#begin('$HOME/.config/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
@@ -60,6 +60,11 @@ Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     Plugin 'Shougo/deoplete-clangx'
     Plugin 'deoplete-plugins/deoplete-jedi'
     Plugin 'Shougo/neco-vim'
+    if has('win32') || has('win64')
+        Plugin 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+    else
+        Plugin 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+    endif
 call vundle#end()
 
 " Section: neomake Linter configuration
