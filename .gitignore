@@ -6,4 +6,5 @@
 !README.md
 !.tmux/tmux-powerline/tmuxline.conf
 !.config/nvim/init.vim
-
+!.config/kitty/kitty.conf
+!.profile
