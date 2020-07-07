@@ -33,3 +33,7 @@
 !.config/polybar/*
 !.config/polybar/scripts/
 !.config/polybar/scripts/*
+
+# dunst
+!.config/dunst
+!.config/dunst/*
