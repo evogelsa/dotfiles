@@ -19,4 +19,4 @@ bspc rule -a Screenkey manage=off
 
 $HOME/.config/polybar/launch.sh
 picom -b &
-wal -i /usr/share/backgrounds/wallpaper.jpg
+wal -i /usr/share/backgrounds/

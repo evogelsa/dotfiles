@@ -184,7 +184,7 @@ label-song-background = ${colors.background}
 label-song-padding = 2
 label-time-foreground = ${colors.foreground}
 label-time-background = ${colors.background}
-label-time-padding = 1
+label-time-padding = 2
 
 format-offline = <label-offline>
 label-offline =  offline
@@ -321,7 +321,7 @@ type = custom/menu
 expand-right = true
 
 format-spacing = 1
-format-margin = 0
+format-margin = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-padding = 2
@@ -373,7 +373,7 @@ click-left = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org
 [module/playpause]
 type = custom/ipc
 format-font = 2
-format-padding = 0
+format-padding = 2
 format-foreground = ${colors.foreground}
 ; Default
 hook-0 = echo ""
