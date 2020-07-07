@@ -16,11 +16,11 @@
 # tmux config
 !.tmux.conf
 !.tmux/tmux-powerline/
-!.tmux/tmux-powerline/tmuxline.conf
+!.tmux/tmux-powerline/*
 
 # kitty terminal config
 !.config/kitty/
-!.config/kitty/kitty.conf
+!.config/kitty/*
 
 # bspwm
 !.config/bspwm/
@@ -30,8 +30,6 @@
 
 # polybar
 !.config/polybar/
-!.config/polybar/config
-!.config/polybar/launch.sh
-
-# scripts
-!.scripts/
+!.config/polybar/*
+!.config/polybar/scripts/
+!.config/polybar/scripts/*
