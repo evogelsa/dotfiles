@@ -1,10 +1,31 @@
 *
-!.vimrc
-!.bashrc
-!.tmux.conf
+# git
 !.gitignore
 !README.md
-!.tmux/tmux-powerline/tmuxline.conf
-!.config/nvim/init.vim
-!.config/kitty/kitty.conf
+
+# bash profile
+!.bashrc
 !.profile
+
+# vim and neovim configs
+!.vimrc
+!.config/nvim/init.vim
+
+# tmux config
+!.tmux.conf
+!.tmux/tmux-powerline/tmuxline.conf
+
+# kitty terminal config
+!.config/kitty/kitty.conf
+
+# bspwm
+!.config/bspwm/bspwmrc
+!.config/bspwm/wallpaper.jpg
+!.config/sxhkd/sxhkdrc
+
+# polybar
+!.config/polybar/config
+!.config/polybar/launch.sh
+
+# scripts
+!.scripts/**

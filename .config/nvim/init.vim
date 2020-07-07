@@ -33,6 +33,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'dylanaraps/wal.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 " Plugin 'sheerun/vim-polyglot'
 Plugin 'joshdick/onedark.vim'
@@ -50,7 +51,7 @@ Plugin 'xolox/vim-misc'
 " Plugin 'xolox/vim-easytags'
 Plugin 'szw/vim-tags'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'xuhdev/vim-latex-live-preview'
+" Plugin 'xuhdev/vim-latex-live-preview'
 " Plugin 'ycm-core/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -279,7 +280,7 @@ inoremap <s-tab> <c-p>
 "color scheme
 set t_Co=256
 set background=dark
-colorscheme PaperColor
+colorscheme wal
 syntax enable
 syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE

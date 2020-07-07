@@ -5,10 +5,29 @@ case $- in
    *i*) ;;
       *) return;;
 esac
+
 # start running tmux by default but check tmux exists and its interative shell
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-   exec tmux attach
-fi
+
+# opt 1
+
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+#   exec tmux attach
+#fi
+
+# opt 2
+
+# if which tmux >/dev/null 2>&1; then
+#     # if no session is started, start a new session
+#     if [[ -z "$TMUX" ]] ;then
+#         ID="$( tmux ls | grep -vm1 attached | cut -d: -f1 )" # get the id of a deattached session
+#         if [[ -z "$ID" ]] ;then # if not available create a new one
+#             tmux new-session
+#         else
+#             tmux attach-session -t "$ID" # if available attach to it
+#         fi
+#     fi
+# fi
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
@@ -167,3 +186,7 @@ md2pdf()
       echo "'$1' is not a valid file"
    fi
 }
+
+cat ~/.cache/wal/sequences &
+source ~/.cache/wal/colors-tty.sh
+neofetch
