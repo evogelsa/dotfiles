@@ -104,7 +104,6 @@ alias icat="kitty +kitten icat"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 
-
 # #---Function Definitions---#
 
 

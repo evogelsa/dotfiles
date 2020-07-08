@@ -1,0 +1,7 @@
+set preview true
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+set icons
+set ratios 1:2:3
+map ob $ln -f "$f" $HOME/.config/bspwm/wallpaper && feh --no-fehbg --bg-fill "$HOME/.config/bspwm/wallpaper" 2>/dev/null
+map oo $xdg-open "$f"
