@@ -1,4 +1,6 @@
 *
+.cfg
+
 # git
 !.gitignore
 !README.md

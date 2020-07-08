@@ -142,6 +142,7 @@ alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias cura="/usr/bin/Cura/Cura_4.4.1.AppImage&"
 alias icat="kitty +kitten icat"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # if type nvim > /dev/null 2>&1; then
 #   alias vim='nvim'
