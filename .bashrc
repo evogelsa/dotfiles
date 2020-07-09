@@ -14,6 +14,7 @@ shopt -s histappend # append to history
 HISTSIZE=1000
 HISTFILESIZE=2000
 shopt -s checkwinsize # check window size update lines and cols
+
 set -o vi # vim mode
 bind 'set show-mode-in-prompt on'
 bind '"jj":vi-movement-mode'
@@ -31,8 +32,11 @@ fi
 
 
 export VISUAL=/usr/bin/vim
+
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/bin
+
 export GOPATH=$HOME/go
 
 
@@ -75,31 +79,32 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias ..="cd .."
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
+alias tree="tree -C"
+alias dirtree="tree -Cd"
+alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
+alias "n."="nautilus ."
+
 alias vi=vim
+alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
+
 alias vg="valgrind --leak-check=yes --malloc-fill=0x88 --track-origins=yes"
 alias compile_only="gcc -Wall -Wpedantic -g -c"
 alias compile="gcc -Wall -Wpedantic -g -o"
+
 alias py="python3"
 alias py3="python3"
 alias ipy="ipython"
 alias pip="pip3"
-alias chrome="/opt/google/chrome/google-chrome"
-alias ..="cd .."
-alias tree="tree -C"
-alias dirtree="tree -Cd"
-alias arduino="/usr/bin/arduino-1.8.9-linux64/arduino-1.8.9/arduino"
-alias androidstudio="/usr/bin/android-studio/bin/studio.sh"
-alias "n."="nautilus ."
-alias tron="ssh sshtron.zachlatta.com"
-alias crt="cool-retro-term -e tmux"
-alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
-alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
-alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
+
 alias icat="kitty +kitten icat"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+alias tron="ssh sshtron.zachlatta.com"
+alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 
 
 # #---Function Definitions---#
