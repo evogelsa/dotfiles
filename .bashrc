@@ -78,8 +78,6 @@ fi
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
-alias silo="ssh -X evogelsa@silo.sice.indiana.edu"
-alias siloftp="sftp evogelsa@silo.sice.indiana.edu"
 alias vi=vim
 alias vg="valgrind --leak-check=yes --malloc-fill=0x88 --track-origins=yes"
 alias compile_only="gcc -Wall -Wpedantic -g -c"
