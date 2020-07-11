@@ -19,5 +19,4 @@ bspc rule -a Zathura state=tiled
 $HOME/.config/polybar/launch.sh
 picom -b &
 dunst &
-light-locker &
 wal -i /usr/share/backgrounds/
