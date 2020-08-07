@@ -32,7 +32,7 @@ super + Return
 
 # chrome
 super + b
-    google-chrome-stable
+    /usr/bin/google-chrome-stable %U --force-dark-mode
 
 # discord
 super + d
@@ -48,6 +48,9 @@ super + Escape
 
 super + ctrl + @s
     $HOME/.scripts/screenshot.sh
+
+super + alt + x
+    betterlockscreen -l dim
 
 #
 # bspwm hotkeys

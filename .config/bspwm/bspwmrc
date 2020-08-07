@@ -17,7 +17,6 @@ bspc rule -a Screenkey manage=off
 bspc rule -a Zathura state=tiled
 
 $HOME/.config/polybar/launch.sh
-# picom -b &
 compton &
 dunst &
 wal -i /usr/share/backgrounds/
