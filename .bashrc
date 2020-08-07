@@ -86,7 +86,7 @@ alias l='ls -CF'
 alias tree="tree -C"
 alias dirtree="tree -Cd"
 alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
-alias "n."="nautilus ."
+alias "t."="thunar ."
 
 alias vi=vim
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
