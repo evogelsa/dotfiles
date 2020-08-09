@@ -55,7 +55,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 " Plugin 'ycm-core/YouCompleteMe'
 Plugin 'fatih/vim-go'
 Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+    Plugin 'stamblerre/gocode', {'rtp': 'nvim/'}
     Plugin 'deoplete-plugins/deoplete-go', { 'do': 'make'}
     Plugin 'Shougo/neoinclude.vim'
     Plugin 'Shougo/deoplete-clangx'
@@ -97,6 +97,7 @@ let g:airline#extensions#ale#enabled = 1
 " Section: deoplete
 
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = '$HOME/go/bin/gocode'
 
 " Section: youcompleteme
 
