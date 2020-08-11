@@ -102,6 +102,7 @@ alias pip="pip3"
 
 alias icat="kitty +kitten icat"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias nmgui="$HOME/.scripts/nmgui.sh"
 
 alias tron="ssh sshtron.zachlatta.com"
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
