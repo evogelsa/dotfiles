@@ -31,7 +31,9 @@ fi
 # #---Path Settings---#
 
 
-export VISUAL=/usr/bin/vim
+export EDITOR=nvim
+export VISUAL=nvim
+export WM=bspwm
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
@@ -41,6 +43,14 @@ export GOPATH=$HOME/go
 
 
 # #---Prompt Settings---#
+
+# terminal colors
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # blinking, green
+export LESS_TERMCAP_md=$(tput bold; tput setaf 2) # bold, green
+export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) # standout, yellow
+export LESS_TERMCAP_se=$(tput rmso; tput sgr0) # end standout
+export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 1) # red
+export LESS_TERMCAP_me=$(tput sgr0) # end
 
 
 force_color_prompt=yes
