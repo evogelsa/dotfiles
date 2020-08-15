@@ -2,6 +2,7 @@
 
 set nocompatible              " be iMproved, required
 filetype plugin on
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -15,52 +16,55 @@ set formatoptions=tqcr
 set conceallevel=0
 set signcolumn=yes
 set redrawtime=10000
-" include fuzzy finder and vundle in run time path
-"set rtp+=~/.fzf
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+
 
 " Section: Plugins
 
+
 call vundle#begin('$HOME/.config/nvim/bundle')
 Plugin 'VundleVim/Vundle.vim'
+
+" utility
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-endwise'
-Plugin 'vim-airline/vim-airline'
-Plugin 'godlygeek/tabular'
+" Plugin 'tpope/vim-endwise'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'dylanaraps/wal.vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'joshdick/onedark.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'Yggdroot/indentLine'
 Plugin 'christoomey/vim-system-copy'
-Plugin 'neomake/neomake'
-Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'sickill/vim-pasta'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
+
+" beauty
+Plugin 'dylanaraps/wal.vim'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'vim-airline/vim-airline'
+Plugin 'Yggdroot/indentLine'
+Plugin 'bronson/vim-trailing-whitespace'
+
+" linting and completion
+Plugin 'neomake/neomake'
 Plugin 'fatih/vim-go'
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    Plugin 'stamblerre/gocode', {'rtp': 'nvim/'}
-    Plugin 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-    Plugin 'Shougo/neoinclude.vim'
-    Plugin 'Shougo/deoplete-clangx'
-    Plugin 'deoplete-plugins/deoplete-jedi'
-    Plugin 'Shougo/neco-vim'
-    if has('win32') || has('win64')
-        Plugin 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-    else
-        Plugin 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-    endif
+
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
 
+
 " Section: neomake Linter configuration
+
 
 " When writing a buffer (no delay).
 " call neomake#configure#automake('w')
@@ -69,34 +73,74 @@ call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['pyflakes', 'python']
 
-" iection: Syntastic Linter configuration
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 3
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_c_checkers = ['gcc']
-let g:syntastic_c_compiler_options = "-Wall -Wpedantic -g -c"
-let g:syntastic_c_include_dirs = ["includes", "headers"]
-let g:syntastic_python_checkers = ['python']
-
-let g:airline#extensions#ale#enabled = 1
 
 " Section: deoplete
 
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#go#gocode_binary = '$HOME/go/bin/gocode'
+" " complete with tab
+" inoremap  <c-space> <c-x><c-o>
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <s-tab> <c-p>
 
-" Section: youcompleteme
 
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" Section: coc.nvim
+
+
+if has("patch-8.1.1564")
+    set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+inoremap <silent><expr> <tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+inoremap <expr> <s-tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col-1] =~# '\s'
+endfunction
+
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+nmap <leader>rn <Plug>(coc-rename)
+
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
+
+
+
 
 " Section: Airline and tmux powerline
+
 
 set laststatus=2
 " airline supposedly help with slowdowns
@@ -108,55 +152,24 @@ if ! has('gui_running')
     au InsertLeave * set timeoutlen=1000
   augroup END
 endif
-" tmux powerline
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_preset = {
-   \'a'     : '#S',
-   \'b'     : '#W',
-   \'c'     : '#H',
-   \'win'   : '#I #W',
-   \'cwin'  : '#I #W',
-   \'x'     : '%R',
-   \'y'     : '%A',
-   \'z'     : '%D'}
-" end lightline config
 
-" Section: Vim Markdown
-
-let g:vim_markdown_folding_disabled = 1
-" make vim table mode plugin use | for md compatibility
-let g:table_mode_corner = '|'
-
-" Section: LaTeX preview
-
-let g:livepreview_cursorhold_recompile = 0
-
-" Section: Vim Easytags
-
-let g:easytags_async = 1
-let g:easytags_file = '~/.vim/tags'
-set tags=./.tags;
-let g:easytags_on_cursorhold = 0
-let g:easytags_dynamic_file = 1
-let g:easytags_auto_highlight = 0
-let g:easytags_autorecurse = 1
-let g:ycm_collect_identifiers_from_tags_files=0
-
-" Section: Vim autotag
-
-let g:autotagTagsFile="./.tags"
 
 " Section: indent line
 
+
 let g:indentLine_fileTypeExclude = ['markdown']
 
+
 " Section: vim-go
+
 
 let g:go_snippet_engine = ""
 let g:go_template_autocreate = 0
 let g:go_code_completion_enabled = 0
 
+
 " Section: Key mappings
+
 
 " add alt key support <M- > in normal mode
 for i in range(65,90) + range(97,122)
@@ -263,14 +276,10 @@ inoremap <C-a> <C-q>
 nnoremap <silent> <F6> :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-" complete with tab
-inoremap  <c-space> <c-x><c-o>
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <s-tab> <c-p>
 
 " Section: Color scheme
 
-"color scheme
+
 set t_Co=256
 set background=dark
 colorscheme PaperColor
@@ -279,13 +288,11 @@ syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 highlight ColorColumn ctermbg=7
-"let g:lightline = {
-"   \ 'colorscheme': 'one',
-"   \ }
 set noshowmode
-"end colorscheme
+
 
 " Section: Functions
+
 
 function ClosePair(char)
  if getline('.')[col('.') - 1] == a:char
@@ -340,8 +347,6 @@ augroup END
 " 	autocmd BufWritePost *.go :GoBuild
 " 	autocmd BufWritePost *_test.go :GoTest
 " augroup end
-
-
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
