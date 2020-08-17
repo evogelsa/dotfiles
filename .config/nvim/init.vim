@@ -7,6 +7,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set colorcolumn=81
+highlight ColorColumn ctermbg=238
 set number
 set relativenumber
 set autoindent
@@ -74,17 +75,6 @@ let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['pyflakes', 'python']
 
 
-" Section: deoplete
-
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '$HOME/go/bin/gocode'
-" " complete with tab
-" inoremap  <c-space> <c-x><c-o>
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" inoremap <s-tab> <c-p>
-
-
 " Section: coc.nvim
 
 
@@ -137,6 +127,11 @@ xmap <leader>f <Plug>(coc-format-selected)
 nmap <leader>f <Plug>(coc-format-selected)
 
 
+" Section: vimspector
+
+
+let g:vimspector_enable_mappings = 'HUMAN'
+packadd! vimspector
 
 
 " Section: Airline and tmux powerline
@@ -157,7 +152,7 @@ endif
 " Section: indent line
 
 
-let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 
 " Section: vim-go
@@ -273,8 +268,8 @@ inoremap ' <c-r>=QuoteDelim("'")<CR>
 " Remap C-a to C-q to not conflict with tmux
 inoremap <C-a> <C-q>
 " :set ts=2 noet | retab! | set et ts=4 | retab
-nnoremap <silent> <F6> :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
-nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <silent> <leader>r :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
+nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 
 " Section: Color scheme
@@ -287,7 +282,6 @@ syntax enable
 syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
-highlight ColorColumn ctermbg=7
 set noshowmode
 
 
