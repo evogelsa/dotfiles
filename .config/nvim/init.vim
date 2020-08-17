@@ -24,6 +24,7 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set rtp+=~/.config/nvim/bundle/Vundle.vim
+let mapleader = ","
 
 
 " Section: Plugins
@@ -64,15 +65,32 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
 
 
+" Section: FZF
+
+
+set rtp+=~/.fzf
+nnoremap <leader>o :FZF<CR>
+
+
 " Section: neomake Linter configuration
 
 
-" When writing a buffer (no delay).
-" call neomake#configure#automake('w')
 " When reading a buffer (after 1s), and when writing (no delay).
 call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['pyflakes', 'python']
+
+" autoclose location list
+augroup my_neomake_qf
+    autocmd!
+    autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
+augroup END
+
+"autoclose quick fix if only window
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
 
 
 " Section: coc.nvim
@@ -163,40 +181,49 @@ let g:go_template_autocreate = 0
 let g:go_code_completion_enabled = 0
 
 
+" Section: easymotion
+
+
+" Bind search keys to work with easy motion
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+
+
+" Section: NerdTree
+
+
+" toggle nerd tree
+map <C-b> :NERDTreeToggle<CR>
+"auto close vim if nerdtree is only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
 " Section: Key mappings
 
+
+imap jj <ESC>
 
 " add alt key support <M- > in normal mode
 for i in range(65,90) + range(97,122)
   let c = nr2char(i)
   exec "map \e".c." <M-".c.">"
 endfor
-" Remap leader key to comma
-let mapleader = ","
+
 " Tab flow uses meta + direction
-imap jj <ESC>
 map <M-j> :tabp<cr>
 map <M-k> :tabn<cr>
 map <M-h> :tabfirst<cr>
 map <M-l> :tablast<cr>
 map <M-p> :FZF<cr>
+
 " Ctrl + direction to change panes
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-h> <C-w>h
 map <C-l> <C-w>l
-" Bind search keys to work with easy motion
-map / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map n <Plug>(easymotion-next)
-map N <Plug>(easymotion-prev)
-" Nerd tree map
-map <C-b> :NERDTreeToggle<CR>
-" Auto close brackets and delims
-" inoremap ( ()<Esc>i
-" inoremap [ []<Esc>i
-" inoremap { {<CR>}<up><Esc>A
-"-- AUTOCLOSE --
+
 "autoclose and position cursor to write text inside
 inoremap ' ''<left>
 inoremap ` ``<left>
@@ -204,6 +231,7 @@ inoremap " ""<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+"
 "autoclose with ; and position cursor to write text inside
 inoremap '; '';<left><left>
 inoremap `; ``;<left><left>
@@ -211,13 +239,7 @@ inoremap "; "";<left><left>
 inoremap (; ();<left><left>
 inoremap [; [];<left><left>
 inoremap {; {};<left><left>
-" "autoclose with , and position cursor to write text inside
-" inoremap ', '',<left><left>
-" inoremap `, ``,<left><left>
-" inoremap ", "",<left><left>
-" inoremap (, (),<left><left>
-" inoremap [, [],<left><left>
-" inoremap {, {},<left><left>
+
 "autoclose and position cursor after
 inoremap '<tab> ''
 inoremap `<tab> ``
@@ -225,6 +247,7 @@ inoremap "<tab> ""
 inoremap (<tab> ()
 inoremap [<tab> []
 inoremap {<tab> {}
+
 "autoclose with ; and position cursor after
 inoremap ';<tab> '';
 inoremap `;<tab> ``;
@@ -232,13 +255,7 @@ inoremap ";<tab> "";
 inoremap (;<tab> ();
 inoremap [;<tab> [];
 inoremap {;<tab> {};
-" "autoclose with , and position cursor after
-" inoremap ',<tab> '',
-" inoremap `,<tab> ``,
-" inoremap ",<tab> "",
-" inoremap (,<tab> (),
-" inoremap [,<tab> [],
-" inoremap {,<tab> {},
+
 "autoclose 2 lines below and position cursor in the middle
 inoremap '<CR> '<CR>'<ESC>O
 inoremap `<CR> `<CR>`<ESC>O
@@ -246,6 +263,7 @@ inoremap "<CR> "<CR>"<ESC>O
 inoremap (<CR> (<CR>)<ESC>O
 inoremap [<CR> [<CR>]<ESC>O
 inoremap {<CR> {<CR>}<ESC>O
+
 "autoclose 2 lines below adding ; and position cursor in the middle
 inoremap ';<CR> '<CR>';<ESC>O
 inoremap `;<CR> `<CR>`;<ESC>O
@@ -253,6 +271,7 @@ inoremap ";<CR> "<CR>";<ESC>O
 inoremap (;<CR> (<CR>);<ESC>O
 inoremap [;<CR> [<CR>];<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
 "autoclose 2 lines below adding , and position cursor in the middle
 inoremap ',<CR> '<CR>',<ESC>O
 inoremap `,<CR> `<CR>`,<ESC>O
@@ -265,10 +284,11 @@ inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=ClosePair('}')<CR>
 inoremap " <c-r>=QuoteDelim('"')<CR>
 inoremap ' <c-r>=QuoteDelim("'")<CR>
-" Remap C-a to C-q to not conflict with tmux
-inoremap <C-a> <C-q>
-" :set ts=2 noet | retab! | set et ts=4 | retab
+
+" retab
 nnoremap <silent> <leader>r :set ts=2 noet <Bar> retab! <Bar> set et ts=4 <Bar> retab <CR>
+
+" remove whitespace at end of lines
 nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 
@@ -318,29 +338,6 @@ function QuoteDelim(char)
  return a:char.a:char."\<Esc>i"
  endif
 endf
-
-"auto clsoe vim if nerdtree is only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"autoclose preview after complete or leave insert deoplete
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-"autoclose quick fix if only window
-aug QFClose
-  au!
-  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
-aug END
-" autoclose location list
-augroup my_neomake_qf
-    autocmd!
-    autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
-augroup END
-"auto build on write vim-go
-" vim-go syntastic compat
-" " Build/Test on save.
-" augroup auto_go
-" 	autocmd!
-" 	autocmd BufWritePost *.go :GoBuild
-" 	autocmd BufWritePost *_test.go :GoTest
-" augroup end
 
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
