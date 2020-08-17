@@ -1,0 +1,40 @@
+{
+  "configurations": {
+    "Python - $current.py": {
+      "adapter": "debugpy",
+      "configuration": {
+        "request": "launch",
+        "type": "python",
+        "cwd": "${cwd}",
+        "program": "${program:${file\\}}",
+        "stopOnEntry#json": "${StopOnEntry:true}",
+        "console": "integratedTerminal",
+        "args#json": "${args:[]}",
+        "env#json": "${env:{\\}}"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "Y",
+          "userUnhandled": ""
+        }
+      }
+    },
+    "Go - main.go": {
+      "adapter": "vscode-go",
+      "configuration": {
+        "request": "launch",
+        "type": "go",
+        "cwd": "${cwd}",
+        "program": "${cwd}/main.go",
+        "stopOnEntry#json": "${StopOnEntry:true}",
+        "console": "integratedTerminal",
+        "mode": "debug",
+        "args#json": "${args:[]}",
+        "env": { "GO111MODULE": "on" },
+        "dlvToolPath": "$HOME/go/bin/dlv",
+        "trace": true
+      }
+    }
+  }
+}
