@@ -37,6 +37,7 @@ export WM=bspwm
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/bin
 
@@ -113,7 +114,6 @@ alias pip="pip3"
 
 alias icat="kitty +kitten icat"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias nmgui="$HOME/.scripts/nmgui.sh"
 
 alias tron="ssh sshtron.zachlatta.com"
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
