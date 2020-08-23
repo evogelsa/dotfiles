@@ -47,7 +47,7 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 super + ctrl + @s
-    $HOME/.scripts/screenshot.sh
+    $HOME/.scripts/screenshot
 
 super + alt + x
     betterlockscreen -l dim
