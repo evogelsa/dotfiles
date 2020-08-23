@@ -150,6 +150,7 @@ nmap <leader>f <Plug>(coc-format-selected)
 
 let g:vimspector_enable_mappings = 'HUMAN'
 packadd! vimspector
+map <F2> :VimspectorReset
 
 
 " Section: Airline and tmux powerline
