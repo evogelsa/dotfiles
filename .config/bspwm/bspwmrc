@@ -21,4 +21,5 @@ $HOME/.config/polybar/launch.sh
 picom &
 dunst &
 nm-applet 2>&1 &
+blueman-applet &
 wal -i /usr/share/backgrounds/
