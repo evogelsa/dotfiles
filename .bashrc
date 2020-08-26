@@ -33,6 +33,7 @@ fi
 
 export EDITOR=nvim
 export VISUAL=nvim
+export BROWSER=firefox
 export WM=bspwm
 
 export PATH=$PATH:/usr/local/go/bin
