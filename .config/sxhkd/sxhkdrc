@@ -39,7 +39,8 @@ super + d
     discord
 
 # spotify
-super + 
+super + g
+    spotify
 
 # program launcher
 super + @space
