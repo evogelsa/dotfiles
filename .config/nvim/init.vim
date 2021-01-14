@@ -54,6 +54,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'vim-airline/vim-airline'
+Plugin 'lukas-reineke/indent-blankline.nvim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bronson/vim-trailing-whitespace'
 
@@ -188,7 +189,13 @@ endif
 " Section: indent line
 
 
-let g:indentLine_fileTypeExclude = ['markdown', 'json']
+let g:indentLine_fileTypeExclude = ['markdown', 'json', 'tex']
+let g:indentLine_char = '┆'
+let g:indent_blankline_char = '┆'
+let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_leadingSpaceEnabled = 1
+set list
+set listchars=tab:\┆·
 
 
 " Section: vim-go
