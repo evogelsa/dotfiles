@@ -2,5 +2,6 @@ configuration {
     font: "Inconsolata Bold for powerline 9";
     theme: "~/.cache/wal/colors-rofi-dark.rasi";
     theme: "float";
-    combi-modi: "window,drun,ssh";
+    combi-modi: "drun,ssh,run";
+    terminal: "kitty";
 }
