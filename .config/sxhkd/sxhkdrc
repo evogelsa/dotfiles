@@ -60,6 +60,9 @@ super + ctrl + @s
 super + alt + x
     betterlockscreen -l dim
 
+super + alt + b
+    wal -i /usr/share/backgrounds/
+
 #
 # bspwm hotkeys
 #
