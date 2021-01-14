@@ -44,10 +44,9 @@ export PATH=$PATH:$HOME/bin
 
 export GOPATH=$HOME/go
 
-source /opt/ros/noetic/setup.bash
-
 
 # #---Prompt Settings---#
+
 
 # terminal colors
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # blinking, green
