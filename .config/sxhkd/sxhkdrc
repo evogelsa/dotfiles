@@ -48,7 +48,7 @@ super + n
 
 # program launcher
 super + @space
-    rofi -show combi
+    rofi -show combi -sidebar-mode
 
 # make sxhkd reload its configuration files:
 super + Escape
