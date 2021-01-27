@@ -97,6 +97,7 @@ nnoremap <leader>o :FZF<CR>
 call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['pyflakes', 'python']
+let g:neomake_cpp_enabled_makers = ['clang++', 'g++']
 
 " autoclose location list
 augroup my_neomake_qf
