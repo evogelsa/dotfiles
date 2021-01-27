@@ -34,7 +34,6 @@ fi
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=firefox
-export TERM=kitty
 export WM=bspwm
 
 export PATH=$PATH:/usr/local/go/bin
