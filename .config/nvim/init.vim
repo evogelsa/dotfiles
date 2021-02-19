@@ -98,6 +98,7 @@ call neomake#configure#automake('rw', 1000)
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['pyflakes', 'python']
 let g:neomake_cpp_enabled_makers = ['clang++', 'g++']
+let g:neomake_c_enabled_makers = ['clang', 'gcc']
 
 " autoclose location list
 augroup my_neomake_qf
@@ -178,12 +179,12 @@ map <F2> :VimspectorReset
 set laststatus=2
 " airline supposedly help with slowdowns
 if ! has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=250
-    au InsertLeave * set timeoutlen=1000
-  augroup END
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=250
+        au InsertLeave * set timeoutlen=1000
+    augroup END
 endif
 
 
@@ -194,9 +195,10 @@ let g:indentLine_fileTypeExclude = ['markdown', 'json', 'tex']
 let g:indentLine_char = '┆'
 let g:indent_blankline_char = '┆'
 let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_leadingSpaceEnabled = 1
+let g:indentLine_leadingSpaceEnabled = 0
 set list
-set listchars=tab:\┆·
+" set listchars=tab:\┆·
+set listchars=tab:\┆\ 
 
 
 " Section: vim-go
