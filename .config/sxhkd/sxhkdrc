@@ -60,6 +60,9 @@ super + ctrl + @s
 super + alt + x
     betterlockscreen -l dim
 
+shift + super + alt + x
+    betterlockscreen -s dim
+
 super + alt + b
     wal -i /usr/share/backgrounds/
 
