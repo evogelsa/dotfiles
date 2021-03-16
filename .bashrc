@@ -99,8 +99,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias tree="tree -C"
 alias dirtree="tree -Cd"
-alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
+
 alias "t."="thunar ."
+alias monitor=arandr
 
 alias vi=vim
 alias emacs="echo \"haha nice try\"; sleep .5; vim $@"
@@ -115,8 +116,9 @@ alias ipy="ipython"
 alias pip="pip3"
 
 alias icat="kitty +kitten icat"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
+alias whatsTakingUpSpace="sudo du -cha --max-depth=1 . | grep -E \"M|G\""
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias swagger="docker run --rm -it -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 
 
@@ -152,13 +154,26 @@ md2pdf()
 {
    if [ -f $1 ] ; then
       if [ $2 ] ; then
-         pandoc $1 -o $2
+         pandoc -f markdown-implicit_figures -t pdf -V geometry:margin=1in $1 -o $2
       else
-         pandoc $1 -o ${1%.*}.pdf
+         pandoc -f markdown-implicit_figures -t pdf -V geometry:margin=1in $1 -o ${1%.*}.pdf
       fi
    else
       echo "'$1' is not a valid file"
    fi
+}
+
+md2html()
+{
+    if [ -f $1 ] ; then
+        if [ $2 ] ; then
+            pandoc --standalone --template template.html $1 -o $2
+        else
+            pandoc --standalone --template template.html $1 -o ${1%.*}.html
+        fi
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 
