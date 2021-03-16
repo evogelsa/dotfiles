@@ -2,7 +2,13 @@
 
 sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+if [ -x $HOME/.scripts/laptop_dual_monitor ]; then
+    $HOME/.scripts/laptop_dual_monitor
+    bspc monitor DP1 -d 1 2 3 4 5
+    bspc monitor eDP1 -d 6 7 8 9 0
+else
+    bspc monitor -d I II III IV V VI VII VIII IX X
+fi
 
 bspc config border_width         0
 bspc config window_gap           8
@@ -12,10 +18,9 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config border_radius        15
 
-bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
-bspc rule -a Zathura state=tiled
+bspc rule -a Godot_Engine state=floating
 
 $HOME/.config/polybar/launch.sh
 picom &
