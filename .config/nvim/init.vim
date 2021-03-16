@@ -49,18 +49,23 @@ Plugin 'christoomey/vim-system-copy'
 Plugin 'sickill/vim-pasta'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'honza/vim-snippets'
+Plugin 'calviken/vim-gdscript3'
 
 " beauty
 Plugin 'dylanaraps/wal.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'lukas-reineke/indent-blankline.nvim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'ap/vim-css-color'
 
 " linting and completion
 Plugin 'neomake/neomake'
 Plugin 'fatih/vim-go'
+" Plugin 'OmniSharp/omnisharp-vim'
 
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
@@ -204,7 +209,7 @@ set listchars=tab:\┆\
 " Section: vim-go
 
 
-let g:go_snippet_engine = ""
+" let g:go_snippet_engine = ""
 let g:go_template_autocreate = 0
 let g:go_code_completion_enabled = 0
 
@@ -323,7 +328,8 @@ nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar>
 " Section: Color scheme
 
 
-set t_Co=256
+" PaperColor
+set termguicolors
 set background=dark
 colorscheme PaperColor
 syntax enable
@@ -331,6 +337,16 @@ syntax sync fromstart
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 set noshowmode
+
+" gruvbox
+" set termguicolors
+" set background=dark
+" colorscheme gruvbox
+" syntax enable
+" syntax sync fromstart
+" hi Normal guibg=NONE ctermbg=NONE
+" hi NonText ctermbg=NONE
+" set noshowmode
 
 
 " Section: Functions
