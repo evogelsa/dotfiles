@@ -28,3 +28,11 @@ dunst &
 nm-applet 2>&1 &
 blueman-applet &
 wal -i /usr/share/backgrounds/
+
+if ! pgrep -U $USER xautolock >/dev/null; then
+    $HOME/.scripts/xautolock-script
+fi
+
+if ! pgrep -U $USER redshift-gtk >/dev/null; then
+    redshift-gtk -l 39.17:-85.51
+fi
