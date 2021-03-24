@@ -65,7 +65,7 @@ Plugin 'ap/vim-css-color'
 " linting and completion
 Plugin 'neomake/neomake'
 Plugin 'fatih/vim-go'
-" Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'habamax/vim-godot'
 
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
@@ -120,6 +120,12 @@ aug END
 
 " Section: coc.nvim
 
+
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tabnine',
+                             \ 'coc-snippets', 'coc-html', 'coc-discord-rpc',
+                             \ 'coc-sh', 'coc-python', 'coc-omnisharp',
+                             \ 'coc-markdownlint', 'coc-jedi', 'coc-go',
+                             \ 'coc-css', 'coc-cmake', 'coc-clangd']
 
 if has("patch-8.1.1564")
     set signcolumn=number
