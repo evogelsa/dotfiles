@@ -50,7 +50,6 @@ Plugin 'sickill/vim-pasta'
 Plugin 'xolox/vim-misc'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'honza/vim-snippets'
-Plugin 'calviken/vim-gdscript3'
 
 " beauty
 Plugin 'dylanaraps/wal.vim'
@@ -66,6 +65,7 @@ Plugin 'ap/vim-css-color'
 Plugin 'neomake/neomake'
 Plugin 'fatih/vim-go'
 Plugin 'habamax/vim-godot'
+Plugin 'OrangeT/vim-csharp'
 
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 call vundle#end()
@@ -403,3 +403,9 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <leader>z :ZoomToggle<CR>
+
+function RemoveDuplicateLS()
+    call CocAction('toggleSource', 'cs-2')
+endfunction
+nnoremap dld :call RemoveDuplicateLS()<cr>
+
