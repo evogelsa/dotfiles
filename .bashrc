@@ -36,7 +36,8 @@ function start_agent {
     echo "Success."
     chmod 600 "${SSH_ENV}"
     . "${SSH_ENV}" > /dev/null
-    /usr/bin/ssh-add;
+    /usr/bin/ssh-add $HOME/.ssh/id_rsa;
+    /usr/bin/ssh-add $HOME/.ssh/iu_id_rsa;
 }
 
 if [ -f "${SSH_ENV}" ]; then
