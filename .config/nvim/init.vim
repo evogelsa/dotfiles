@@ -409,3 +409,9 @@ function RemoveDuplicateLS()
 endfunction
 nnoremap dld :call RemoveDuplicateLS()<cr>
 
+
+" Section: Commands
+
+
+command! -nargs=* T split | resize 15 | terminal <args>
+command! -nargs=* VT split | terminal <args>
