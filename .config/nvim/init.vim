@@ -60,6 +60,7 @@ Plugin 'lukas-reineke/indent-blankline.nvim'
 Plugin 'Yggdroot/indentLine'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'ap/vim-css-color'
+Plugin 'vim-python/python-syntax'
 
 " linting and completion
 Plugin 'neomake/neomake'
@@ -184,10 +185,11 @@ packadd! vimspector
 map <F2> :VimspectorReset
 
 
-" Section: Airline and tmux powerline
+" Section: airline and tmux powerline
 
 
 set laststatus=2
+
 " airline supposedly help with slowdowns
 if ! has('gui_running')
     set ttimeoutlen=10
@@ -334,12 +336,34 @@ nnoremap <silent> <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar>
 " Section: Color scheme
 
 
-" PaperColor
+" python syntax highlighting helper
+let g:python_hightlight_all = 1
+
+" PaperColor papercolor
+let g:PaperColor_Theme_Options = {
+ \    'theme': {
+ \        'default': {
+ \            'allow_bold': 1,
+ \            'allow_italic': 1
+ \        }
+ \    },
+ \    'language': {
+ \        'python': {
+ \            'highlight_builtins': 1
+ \        },
+ \        'c': {
+ \            'highlight_builtins': 1
+ \        }
+ \    }
+ \ }
+
 set termguicolors
 set background=dark
 colorscheme PaperColor
+
 syntax enable
 syntax sync fromstart
+
 hi Normal guibg=NONE ctermbg=NONE
 hi NonText ctermbg=NONE
 set noshowmode
