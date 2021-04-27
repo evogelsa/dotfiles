@@ -61,6 +61,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'ap/vim-css-color'
 Plugin 'vim-python/python-syntax'
+Plugin 'plasticboy/vim-markdown'
 
 " linting and completion
 Plugin 'neomake/neomake'
@@ -126,7 +127,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tabnine',
                              \ 'coc-snippets', 'coc-html', 'coc-discord-rpc',
                              \ 'coc-sh', 'coc-python', 'coc-omnisharp',
                              \ 'coc-markdownlint', 'coc-jedi', 'coc-go',
-                             \ 'coc-css', 'coc-cmake', 'coc-clangd']
+                             \ 'coc-css', 'coc-cmake', 'coc-clangd',
+                             \ 'coc-pyright']
 
 if has("patch-8.1.1564")
     set signcolumn=number
@@ -239,6 +241,14 @@ map N <Plug>(easymotion-prev)
 map <C-b> :NERDTreeToggle<CR>
 "auto close vim if nerdtree is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+" Section: vim markdown
+
+
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_folding_disabled = 1
 
 
 " Section: Key mappings
@@ -438,4 +448,4 @@ nnoremap dld :call RemoveDuplicateLS()<cr>
 
 
 command! -nargs=* T split | resize 15 | terminal <args>
-command! -nargs=* VT split | terminal <args>
+command! -nargs=* VT vsplit | terminal <args>
