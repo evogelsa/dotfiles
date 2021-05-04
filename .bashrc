@@ -64,6 +64,7 @@ export PATH=$PATH:$HOME/.scripts
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.dotnet/tools
+export PATH=$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin/
 
 export GOPATH=$HOME/go
 
